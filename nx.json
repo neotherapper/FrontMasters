@@ -1,5 +1,5 @@
 {
-  "npmScope": "front-masters",
+  "npmScope": "workshop",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
