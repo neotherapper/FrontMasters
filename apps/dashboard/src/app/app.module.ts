@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { NxModule } from '@nrwl/nx';
 import { MaterialModule } from '@workshop/material';
+import { HomeModule } from './home/home.module';
+import { CustomersModule } from './customers/customers.module';
+import { ProjectsModule } from './projects/projects.module';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { MaterialModule } from '@workshop/material';
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
-    MaterialModule
+    CustomersModule,
+    HomeModule,
+    MaterialModule,
+    ProjectsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
