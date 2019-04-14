@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 import { NxModule } from '@nrwl/nx';
 import { MaterialModule } from '@workshop/material';
-import { HomeModule } from './home/home.module';
-import { CustomersModule } from './customers/customers.module';
-import { ProjectsModule } from './projects/projects.module';
+import { AppRoutingModule } from './app-routing.module';
+import { UiLoginModule } from '@workshop/ui-login';
 
 
 @NgModule({
@@ -16,12 +13,10 @@ import { ProjectsModule } from './projects/projects.module';
   imports: [
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
-    CustomersModule,
-    HomeModule,
     MaterialModule,
-    ProjectsModule
+    UiLoginModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
