@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
+  selectedProject = {
+    title: '',
+    details: ''
+  };
   projects = [
     {
       id: '1',
@@ -34,5 +38,14 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  selectProject(project) {
+    console.log(project);
+    this.selectedProject = project;
+  }
+
+   cancel(): void {
+     this.selectProject(null);
+   }
 
 }
