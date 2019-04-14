@@ -1,27 +1,34 @@
-<div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
-  />
-</div>
+<mat-toolbar color="primary" class="mat-elevation-z4">
+  <span>
+    <button mat-mini-fab>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="logo">
+      <img src="assets/logo.png" alt="Logo">
+    </span>
+    <span class="title">
+      <!-- TITLE -->
+    </span>
+  </span>
+  <span class="spacer"></span>
+  <button class="login" mat-mini-fab>
+    <mat-icon>person</mat-icon>
+  </button>
+</mat-toolbar>
 
-<p>This is an Angular app built with <a href="https://nx.dev">Nx</a>.</p>
-<p>🔎 **Nx is a set of Angular CLI power-ups for modern development.**</p>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
+    <nav>
+      <a mat-button class="nav-link">
+        <mat-icon>
+          <!-- LINK ICON -->
+        </mat-icon>
+        <!-- LINK LABEL -->
+      </a>
+    </nav>
+  </mat-sidenav>
 
-<h2>Quick Start & Documentation</h2>
-
-<ul>
-  <li>
-    <a href="https://nx.dev/getting-started/what-is-nx"
-      >30-minute video showing all Nx features</a
-    >
-  </li>
-  <li>
-    <a href="https://nx.dev/tutorial/01-create-application"
-      >Interactive tutorial</a
-    >
-  </li>
-</ul>
-
-<router-outlet></router-outlet>
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
