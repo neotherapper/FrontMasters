@@ -18,8 +18,17 @@ export class ProjectsComponent implements OnInit {
     this.getProjects();
   }
 
+  cancel(): void {
+    this.selectProject(null);
+  }
+
   getProjects(): void {
     this.projects$ = this.projectsService.all();
+  }
+
+  deleteProject(project: Project): void {
+    this.projectsService.delete(project.id)
+      .subscribe(result => this.getProjects());
   }
 
   selectProject(project) {
@@ -27,8 +36,11 @@ export class ProjectsComponent implements OnInit {
     this.selectedProject = project;
   }
 
-  cancel(): void {
-    this.selectProject(null);
+  updateProject(project: Project): void {
+    this.projectsService.update(project)
+      .subscribe(result => this.getProjects());
   }
+
+
 
 }
