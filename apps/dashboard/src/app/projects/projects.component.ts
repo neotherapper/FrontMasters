@@ -10,16 +10,18 @@ export class ProjectsComponent implements OnInit {
   selectedProject: Project ;
   projects$: Observable<Project[]>;
 
+
   constructor(
     private projectsService: ProjectsService
   ) { }
 
   ngOnInit() {
     this.getProjects();
+    this.resetProject();
   }
 
   cancel(): void {
-    this.selectProject(null);
+    this.resetProject();
   }
 
   getProjects(): void {
@@ -29,6 +31,21 @@ export class ProjectsComponent implements OnInit {
   deleteProject(project: Project): void {
     this.projectsService.delete(project.id)
       .subscribe(result => this.getProjects());
+  }
+
+  saveProject(project): void {
+
+  }
+
+  resetProject() {
+    const emptyProject: Project = {
+      id: null,
+      title: '',
+      details: '',
+      percentComplete: 0,
+      approved: false
+    }
+    this.selectProject(emptyProject);
   }
 
   selectProject(project) {
