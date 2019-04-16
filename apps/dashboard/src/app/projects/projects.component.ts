@@ -10,7 +10,6 @@ export class ProjectsComponent implements OnInit {
   selectedProject: Project ;
   projects$: Observable<Project[]>;
 
-
   constructor(
     private projectsService: ProjectsService
   ) { }
@@ -24,17 +23,24 @@ export class ProjectsComponent implements OnInit {
     this.resetProject();
   }
 
-  getProjects(): void {
-    this.projects$ = this.projectsService.all();
+  createProject(project: Project): void {
+    this.projectsService.create(project)
+      .subscribe(result => {
+        this.getProjects();
+        this.resetProject();
+      });
   }
 
   deleteProject(project: Project): void {
     this.projectsService.delete(project.id)
-      .subscribe(result => this.getProjects());
+      .subscribe(result => {
+        this.getProjects();
+        this.resetProject();
+      });
   }
 
-  saveProject(project): void {
-
+  getProjects(): void {
+    this.projects$ = this.projectsService.all();
   }
 
   resetProject() {
@@ -48,14 +54,24 @@ export class ProjectsComponent implements OnInit {
     this.selectProject(emptyProject);
   }
 
+  saveProject(project): void {
+    if (project.id) {
+      this.updateProject(project);
+    } else {
+      this.createProject(project);
+    }
+  }
+
   selectProject(project) {
-    console.log(project);
     this.selectedProject = project;
   }
 
   updateProject(project: Project): void {
     this.projectsService.update(project)
-      .subscribe(result => this.getProjects());
+      .subscribe(result => {
+        this.getProjects();
+        this.resetProject();
+      });
   }
 
 
